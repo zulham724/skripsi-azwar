@@ -28,6 +28,6 @@ Route::group(['middleware'=>'auth'],function(){
 
 
 Route::get('/pusher/{data}', function($data) {
-    event(new App\Events\DataPusherEvent($data));
+    event(new \App\Events\DataPusherEvent($data));
     return "Event has been sent!";
 });
