@@ -17,13 +17,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('api/client','API\ApiController@client');
+Route::apiResource('clients','API\ClientController');
+Route::post('register','API\UserController@store');
 
-Route::group(['middleware'=>'api','namespace'=>'API'],function(){
+Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::apiResources([
 		'roles'=>'RoleController',
 		'users'=>'UserController',
 		'biodatas'=>'BiodataController',
-		'datas'=>'DataController'
+		'datas'=>'DataController',
+		'pollings'=>'PollingController',
+		'sockets'=>'SocketController'
 	]);
 });

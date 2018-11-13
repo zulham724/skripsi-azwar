@@ -8,6 +8,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.swal = require('sweetalert2');
+import VueCharts from 'vue-chartjs'
+import { Bar, Line } from 'vue-chartjs'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,6 +19,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('chart-component',require('./components/ChartComponent.vue'));
+Vue.component('role-field-component',require('./components/RoleFieldComponent.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Data;
+use App\Models\Data;
 
 class DataController extends Controller
 {
@@ -15,7 +15,7 @@ class DataController extends Controller
      */
     public function index()
     {
-        $data = Data::get();
+        $data = Data::with('user')->get();
         return response()->json($data);
     }
 
@@ -41,7 +41,7 @@ class DataController extends Controller
      */
     public function show($id)
     {
-        $data = Data::find($id);
+        $data = Data::with('user')->find($id);
         return response()->json($data);
     }
 
@@ -54,9 +54,12 @@ class DataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Data::find($id);
+        // $data = Data::find($id);
+        $data = Data::firstOrNew(['user_id'=>$id]);
         $data->fill($request->all());
-        $data->update();
+        $data->hit += 1;
+        $data->save();
+        $event = event(new \App\Events\DataPusherEvent($request->all()));
         return response()->json($data);
     }
 

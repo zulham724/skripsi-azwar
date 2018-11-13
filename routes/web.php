@@ -12,9 +12,22 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('admin');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware'=>'auth'],function(){
+	Route::resources([
+		'users'=>'UserController'
+	]);
+});
+
+
+Route::get('/pusher/{data}', function($data) {
+    event(new App\Events\DataPusherEvent($data));
+    return "Event has been sent!";
+});

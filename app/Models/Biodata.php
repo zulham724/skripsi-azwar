@@ -18,8 +18,8 @@ class Biodata extends Model
     protected $table = 'biodatas';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $guarded = ['id'];
+    // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,7 +34,9 @@ class Biodata extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

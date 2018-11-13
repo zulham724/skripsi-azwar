@@ -15,4 +15,6 @@ Route::group([
     CRUD::resource('role', 'RoleCrudController');
     CRUD::resource('data', 'DataCrudController');
     CRUD::resource('biodata', 'BiodataCrudController');
+    CRUD::resource('polling', 'PollingCrudController');
+    CRUD::resource('socket', 'SocketCrudController');
 }); // this should be the absolute last line of this file

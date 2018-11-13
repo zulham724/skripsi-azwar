@@ -32,6 +32,24 @@ class BiodataCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+        $this->crud->addField([
+            'label'=>'User',
+            'name'=>'user_id',
+            'type'=>'select',
+            'entity'=>'user',
+            'attribute'=>'name',
+            'model'=>'App\Models\User'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'user_id',
+            'label'=>'user',
+            'type'=>'select',
+            'entity'=>'user',
+            'attribute'=>'name',
+            'model'=>'App\Models\User'
+        ]);
+
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 

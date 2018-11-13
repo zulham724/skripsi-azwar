@@ -24,7 +24,7 @@ class DataCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Data');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/data');
-        $this->crud->setEntityNameStrings('data', 'data');
+        $this->crud->setEntityNameStrings('data', 'datas');
 
         /*
         |--------------------------------------------------------------------------
@@ -34,6 +34,15 @@ class DataCrudController extends CrudController
         $this->crud->addField([
             'label'=>'User',
             'name'=>'user_id',
+            'type'=>'select',
+            'entity'=>'user',
+            'attribute'=>'name',
+            'model'=>'App\Models\User'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'user_id',
+            'label'=>'user',
             'type'=>'select',
             'entity'=>'user',
             'attribute'=>'name',

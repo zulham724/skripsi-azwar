@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::get();
+        $users = User::with('biodata','data','role')->get();
         return response()->json($users);
     }
 
@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::with('biodata','data','role')->find($id);
         return response()->json($user);
     }
 

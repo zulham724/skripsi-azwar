@@ -19,8 +19,8 @@ class User extends Model
     protected $table = 'users';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    // protected $guarded = ['id'];
-    protected $fillable = ['role_id','name','email','password'];
+    protected $guarded = ['id'];
+    // protected $fillable = ['role_id','name','email','password'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -37,6 +37,14 @@ class User extends Model
     */
     public function role(){
         return $this->belongsTo('App\Models\Role');
+    }
+
+    public function biodata(){
+        return $this->hasOne('App\Models\Biodata');
+    }
+
+    public function data(){
+        return $this->hasOne('App\Models\Data');
     }
     /*
     |--------------------------------------------------------------------------
