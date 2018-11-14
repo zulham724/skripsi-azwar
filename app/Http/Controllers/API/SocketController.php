@@ -28,11 +28,10 @@ class SocketController extends Controller
     public function store(Request $request)
     {
         $count = Socket::where('user_id',$request['user_id'])->count();
-        (int)$count;
-
+        
         $socket = new Socket;
         $socket->fill($request->all());
-        $socket->name = "Pengiriman Data ke ".$count+1;
+        $socket->name = "Pengiriman Data ke ".$count;
         $socket->save();
         return response()->json($socket);
     }
