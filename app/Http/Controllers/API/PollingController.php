@@ -31,7 +31,7 @@ class PollingController extends Controller
 
         $polling = new Polling;
         $polling->fill($request->all());
-        $socket->name = "Pengiriman Data ke ".$count;
+        $polling->name = "Pengiriman Data ke ".$count;
         $polling->save();
         return response()->json($polling);
     }
