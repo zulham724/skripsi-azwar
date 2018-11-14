@@ -54,4 +54,7 @@ class Socket extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public function setDateAttribute($value){
+        $this->attributes['date'] = date('Y-m-d h:i:s',strtotime($value));
+    }
 }
