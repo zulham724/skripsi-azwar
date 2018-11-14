@@ -27,8 +27,11 @@ class PollingController extends Controller
      */
     public function store(Request $request)
     {
+        $count = Polling::where('user_id',$request['user_id'])->count();
+
         $polling = new Polling;
         $polling->fill($request->all());
+        $socket->name = "Pengiriman Data ke ".$count;
         $polling->save();
         return response()->json($polling);
     }
