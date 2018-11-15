@@ -55,11 +55,11 @@ class DataController extends Controller
     public function update(Request $request, $id)
     {
         // $data = Data::find($id);
+        $event = event(new \App\Events\DataPusherEvent($request->all()));
         $data = Data::firstOrNew(['user_id'=>$id]);
         $data->fill($request->all());
         $data->hit += 1;
         $data->save();
-        $event = event(new \App\Events\DataPusherEvent($request->all()));
         return response()->json($data);
     }
 
