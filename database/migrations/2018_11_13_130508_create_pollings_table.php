@@ -21,6 +21,9 @@ class CreatePollingsTable extends Migration
             $table->text('description')->nullable();
             $table->string('value');
             $table->dateTime('date');
+            $table->string('bandwidth_usage')->default(0);
+            $table->string('cpu_usage')->default(0);
+            $table->string('memory_usage')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

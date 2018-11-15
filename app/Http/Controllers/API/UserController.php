@@ -42,7 +42,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::with('biodata','data','role')->find($id);
-        return response()->json($user);
+        return response()->json([
+            "message"=>$user->data->name ?? null
+        ]);
     }
 
     /**

@@ -18,8 +18,7 @@ class CreateDatasTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name');
-            $table->bigInteger('hit')->default(0);
-            $table->bigInteger('memory')->default(0);
+            $table->string('interval')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
