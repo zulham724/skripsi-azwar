@@ -58,7 +58,6 @@ class DataController extends Controller
         $event = event(new \App\Events\DataPusherEvent($request->all()));
         $data = Data::firstOrNew(['user_id'=>$id]);
         $data->fill($request->all());
-        $data->hit += 1;
         $data->save();
         return response()->json($data);
     }
