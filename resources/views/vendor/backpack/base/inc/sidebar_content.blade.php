@@ -5,5 +5,5 @@
 <li><a href='{{ backpack_url('user') }}'><i class='fa fa-user'></i> <span>Daftar Pengguna</span></a></li>
 <li><a href='{{ backpack_url('biodata') }}'><i class='fa fa-file'></i> <span>Daftar Biodata Pengguna</span></a></li>
 <li><a href='{{ backpack_url('data') }}'><i class='fa fa-code-branch'></i> <span>Daftar Data</span></a></li>
-<li><a href='{{ backpack_url('polling') }}'><i class='fa fa-tag'></i> <span>Hasil Polling</span></a></li>
-<li><a href='{{ backpack_url('socket') }}'><i class='fa fa-tag'></i> <span>Hasil Socket</span></a></li>
+<li><a href='{{ backpack_url('polling') }}'><i class='fa fa-tag'></i> <span>Hasil Long Polling</span></a></li>
+<li><a href='{{ backpack_url('socket') }}'><i class='fa fa-tag'></i> <span>Hasil WebSocket</span></a></li>

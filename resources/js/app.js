@@ -4,13 +4,15 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
 window.swal = require('sweetalert2');
-import VueCharts from 'vue-chartjs'
-import { Bar, Line } from 'vue-chartjs'
+import VueCharts from 'vue-chartjs';
+import { Bar, Line } from 'vue-chartjs';
+import $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-buttons';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -19,8 +21,12 @@ import { Bar, Line } from 'vue-chartjs'
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('chart-component',require('./components/ChartComponent.vue'));
 Vue.component('role-field-component',require('./components/RoleFieldComponent.vue'));
+Vue.component('comparison-table-component',require('./components/ComparisonTableComponent.vue'));
+Vue.component('comparison-date-component',require('./components/ComparisonDateComponent.vue'));
+Vue.component('comparison-bandwidth-component',require('./components/ComparisonBandwidthComponent.vue'));
+Vue.component('comparison-cpu-component',require('./components/ComparisonCpuComponent.vue'));
+Vue.component('comparison-memory-component',require('./components/ComparisonMemoryComponent.vue'));
 
 const app = new Vue({
     el: '#app'

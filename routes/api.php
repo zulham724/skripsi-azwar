@@ -29,4 +29,9 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		'pollings'=>'PollingController',
 		'sockets'=>'SocketController'
 	]);
+
+	Route::get('compare/dates','CompareController@dates');
+	Route::get('compare/bandwidth','CompareController@bandwidth');
+	Route::get('compare/cpu','CompareController@cpu');
+	Route::get('compare/memory','CompareController@memory');
 });

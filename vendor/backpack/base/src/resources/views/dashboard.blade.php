@@ -3,7 +3,7 @@
 @section('header')
     <section class="content-header">
       <h1>
-        {{ trans('backpack::base.dashboard') }}<small>{{ trans('backpack::base.first_page_you_see') }}</small>
+        Laporan<small> analisis perbandingan long polling dan websocket</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ backpack_url() }}">{{ config('backpack.base.project_name') }}</a></li>
@@ -13,25 +13,63 @@
 @endsection
 
 @section('content')
+  
+  <section class="container-fluid">
+    @if($login == 'true')
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <div class="box-title">{{ trans('backpack::base.login_status') }}</div>
+                </div>
+                <div class="box-body">{{ trans('backpack::base.logged_in') }}</div>
+            </div>
+        </div>
+    </div>
+    @endif
 
-  @if($login == 'true')
-  <div class="row">
-      <div class="col-md-12">
-          <div class="box box-default">
-              <div class="box-header with-border">
-                  <div class="box-title">{{ trans('backpack::base.login_status') }}</div>
-              </div>
-              <div class="box-body">{{ trans('backpack::base.logged_in') }}</div>
-          </div>
-      </div>
-  </div>
-  @endif
+    <comparison-table-component></comparison-table-component>
 
-  <div class="row">
-      <div class="col-md-12">
-          <chart-component></chart-component>
-      </div>
-  </div>
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-md-6">
+            <div class="alert alert-warning">
+              <strong>Kecepatan!</strong> perbandingan manakah yang lebih dulu menerima perintah.
+            </div>
+              
+            <comparison-date-component :height="300"></comparison-date-component>
+           
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-info">
+              <strong>Bandwidth!</strong> perbandingan penggunaan internet dalam bentuk byte.
+            </div>
+
+            <comparison-bandwidth-component :height="300"></comparison-bandwidth-component>
+              
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-md-6">
+            <div class="alert alert-success">
+              <strong>Memory!</strong> Estimasi penggunaan RAM pada hardware.
+            </div>
+
+            <comparison-memory-component :height="300"></comparison-memory-component>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="alert alert-danger">
+              <strong>CPU!</strong> Estimasi beban CPU pada hardware.
+            </div>
+
+            <comparison-cpu-component :height="300"></comparison-cpu-component>
+            
+        </div>
+    </div>
+
+  </section>
 
 @endsection
 
