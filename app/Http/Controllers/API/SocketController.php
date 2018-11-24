@@ -27,7 +27,7 @@ class SocketController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json($request);
+        // return response()->json($request);
         $count = Socket::where('user_id',$request['user_id'])->count();
         
         $socket = new Socket;
