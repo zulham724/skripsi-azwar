@@ -47,7 +47,7 @@ class UserController extends Controller
         $user = User::with('biodata','data','role')->find($id);
         return response()->json([
             "message"=>$user->data->name ?? null,
-            "extra"=>$yser->data->extra ?? null
+            "extra"=>$user->data->extra ?? null
         ]);
     }
 
