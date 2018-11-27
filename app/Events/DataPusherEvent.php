@@ -14,14 +14,16 @@ class DataPusherEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $message;
+    public $extra;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($data)
     {
-        $this->message = $message;
+        $this->message = $data['name'] ?? null;
+        $this->extra = $data['extra'] ?? null;
     }
 
     /**

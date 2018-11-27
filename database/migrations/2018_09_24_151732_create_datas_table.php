@@ -18,6 +18,7 @@ class CreateDatasTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name');
+            $table->text("extra")->nullable();
             $table->string('interval')->default(0);
             $table->timestamps();
 
