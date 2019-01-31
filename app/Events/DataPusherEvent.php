@@ -15,6 +15,7 @@ class DataPusherEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $message;
     public $extra;
+    public $sent_at;
     /**
      * Create a new event instance.
      *
@@ -24,6 +25,7 @@ class DataPusherEvent implements ShouldBroadcast
     {
         $this->message = $data['name'] ?? null;
         $this->extra = $data['extra'] ?? null;
+        $this->sent_at = $data['sent_at'] ?? null;
     }
 
     /**
