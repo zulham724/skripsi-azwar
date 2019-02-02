@@ -20,6 +20,7 @@ class CreateDatasTable extends Migration
             $table->string('name');
             $table->text("extra")->nullable();
             $table->string('interval')->default(0);
+            $table->string('sent_at');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
