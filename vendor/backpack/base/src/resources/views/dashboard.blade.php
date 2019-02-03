@@ -33,7 +33,7 @@
     <div class="row" style="padding-top: 50px;">
         <div class="col-md-6">
             <div class="alert alert-warning">
-              <strong>Kecepatan!</strong> perbandingan manakah yang lebih dulu menerima perintah.
+              <strong>Kecepatan!</strong> perbandingan lamanya pengiriman data, dengan satuan milisecond semakin kecil nilainya berati semakin cepat pengirimannya.
             </div>
               
             <comparison-date-component :height="300"></comparison-date-component>
