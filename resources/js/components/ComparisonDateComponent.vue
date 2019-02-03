@@ -1,8 +1,8 @@
 
 <script>
     import { Bar } from 'vue-chartjs';
+
     export default {
-        props:['options'],
         extends: Bar,
         data(){
           return {
@@ -20,9 +20,17 @@
                 labels: res.data.labels,
                 datasets: [
                   {
-                    label: 'First rank',
-                    backgroundColor: '#F39C12',
-                    data: res.data.datasets
+                    label: 'Long Polling',
+                    backgroundColor: 'rgb(255, 255, 255)',
+                    borderWidth: 1,
+                    borderColor: 'rgb(0, 0, 0)',
+                    data: res.data.datasets.polling
+                  },{
+                    label: 'Websocket',
+                    backgroundColor: pattern.draw('zigzag-horizontal', 'rgb(0, 0, 0)'),
+                    borderWidth: 1,
+                    borderColor: 'rgb(0, 0, 0)',
+                    data: res.data.datasets.socket
                   }
                 ]
               },{

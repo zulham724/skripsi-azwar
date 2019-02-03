@@ -13,6 +13,7 @@ import { Bar, Line } from 'vue-chartjs';
 import $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-buttons';
+window.pattern = require('patternomaly');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -19,8 +19,8 @@ class CreatePollingsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('value');
-            $table->dateTime('date');
+            $table->string('value')->nullable();
+            $table->dateTime('date')->nullable();
             $table->string('response_time')->default(0);
             $table->string('bandwidth_usage')->default(0);
             $table->string('cpu_usage')->default(0);

@@ -15,43 +15,69 @@ class CompareController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dates(){
+        // $pollings = Polling::get();
+        // $sockets = Socket::get();
+        
+        // foreach ($pollings as $p => $polling) {
+        //     $results[$p]['name'] = "Pengiriman Data ke ".$p;
+        //     $results[$p]['polling_date'] = $polling->date;
+        // }
+
+        // foreach ($sockets as $s => $socket) {
+        //     $results[$s]['socket_date'] = $socket->date;
+        // }
+
+        // foreach ($results as $r => $result) {
+        //     if(isset($result['socket_date'],$result['polling_date'])){
+
+        //         $socket_date = new \DateTime($result['socket_date']);
+        //         $polling_date =  new \DateTime($result['polling_date']);
+        //         $results[$r]['time'] = $socket_date->diff($polling_date);
+        //         $results[$r]['difference_in_seconds'] = $socket_date->format('U') - $polling_date->format('U');
+        //         $datasets[$r] = $socket_date->format('U') - $polling_date->format('U');
+
+        //         // array
+
+        //         if($socket_date > $polling_date){
+        //             $results[$r]['faster'] = 'long polling';
+        //             $labels[$r] = "long polling"; 
+        //         } else {
+        //             $results[$r]['faster'] = 'socket';
+        //             $labels[$r] = "socket";
+        //         }
+        //     }
+        // }
+
+        // return response()->json([
+        //     "result"=>$results,
+        //     "labels"=>$labels,
+        //     "datasets"=>$datasets
+        // ]);
+
         $pollings = Polling::get();
         $sockets = Socket::get();
-        
+
         foreach ($pollings as $p => $polling) {
             $results[$p]['name'] = "Pengiriman Data ke ".$p;
-            $results[$p]['polling_date'] = $polling->date;
+            $results[$p]['polling_response_time'] = $polling->response_time;
         }
 
         foreach ($sockets as $s => $socket) {
-            $results[$s]['socket_date'] = $socket->date;
+            $results[$s]['socket_response_time'] = $socket->response_time;
         }
 
         foreach ($results as $r => $result) {
-            if(isset($result['socket_date'],$result['polling_date'])){
+            if(isset($result['socket_response_time'],$result['polling_response_time'])){
 
-                $socket_date = new \DateTime($result['socket_date']);
-                $polling_date =  new \DateTime($result['polling_date']);
-                $results[$r]['time'] = $socket_date->diff($polling_date);
-                $results[$r]['difference_in_seconds'] = $socket_date->format('U') - $polling_date->format('U');
-                $datasets[$r] = $socket_date->format('U') - $polling_date->format('U');
-
-                // array
-
-                if($socket_date > $polling_date){
-                    $results[$r]['faster'] = 'long polling';
-                    $labels[$r] = "long polling"; 
-                } else {
-                    $results[$r]['faster'] = 'socket';
-                    $labels[$r] = "socket";
-                }
+                $labels[$r] = $result['name'];
+                $datasets['polling'][$r] = $result['polling_response_time'];
+                $datasets['socket'][$r] = $result['socket_response_time'];
             }
         }
 
         return response()->json([
-            "result"=>$results,
-            "labels"=>$labels,
-            "datasets"=>$datasets
+            "labels" => $labels,
+            "datasets" => $datasets 
         ]);
     }
 

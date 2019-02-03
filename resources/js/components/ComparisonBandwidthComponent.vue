@@ -20,11 +20,15 @@
                 datasets: [
                   {
                     label: 'Long Polling',
-                    backgroundColor: '#00C86C',
+                    backgroundColor: 'rgb(255, 255, 255)',
+                    borderWidth: 1,
+                    borderColor: 'rgb(0, 0, 0)',
                     data: res.data.datasets.polling
                   },{
                     label: 'Websocket',
-                    backgroundColor: '#76DCDC',
+                    backgroundColor: pattern.draw('zigzag-horizontal', 'rgb(0, 0, 0)'),
+                    borderWidth: 1,
+                    borderColor: 'rgb(0, 0, 0)',
                     data: res.data.datasets.socket
                   }
                 ]
